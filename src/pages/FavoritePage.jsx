@@ -1,41 +1,35 @@
+
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { searchMeals } from "../utils/Meals";
 import Card from "../components/Card";
+import {fetchFavoriteMeals} from '../hooks/useFavorites'
 
 const ITEMS_PER_PAGE = 8;
 
-const SearchResult = () => {
+const FavoritePage = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Extract search query from URL query params
-    const queryParams = new URLSearchParams(location.search);
-    const search = queryParams.get("q") || "";
 
     const [meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
 
-
-    // Fetch meals when search changes
     useEffect(() => {
-        if (!search) return;
-        setCurrentPage(1);
-        fetchMeals(search);
-    }, [search]);
+        const loadFavorites = async () => {
+            try {
+                const data = await fetchFavoriteMeals();
+                setMeals(data);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const fetchMeals = async (searchTerm) => {
-        setLoading(true);
-        try {
-            const { data } = await searchMeals(searchTerm);
-            setMeals(data.meals || []);
-        } catch (err) {
-            console.error("Failed to fetch search results", err);
-        } finally {
-            setLoading(false);
-        }
-    };
+        loadFavorites();
+    }, []);
 
     // Pagination
     const totalPages = Math.ceil(meals.length / ITEMS_PER_PAGE);
@@ -47,8 +41,8 @@ const SearchResult = () => {
         <div className="max-w-6xl mx-auto px-4 py-10">
             <h2 className="text-2xl font-heading mb-6">
                 {meals.length > 0
-                    ? `Showing results for "${search}"`
-                    : `No results found for "${search}"`}
+                    ? `Favorites`
+                    : `No Favorites Found!`}
             </h2>
 
             {loading ? (
@@ -88,4 +82,4 @@ const SearchResult = () => {
     );
 };
 
-export default SearchResult;
+export default FavoritePage;

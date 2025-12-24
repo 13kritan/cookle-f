@@ -1,10 +1,15 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import Img from '../assets/hey.png'
+import { useFavorites } from '../context/FavoriteContext';
+import { fetchFavoriteMeals } from '../hooks/useFavorites';
 
 export default function Card({ title, image, location, type, id }) {
   const navigate = useNavigate()
-  console.log(id)
+  const { favoriteIds, toggleFavorite } = useFavorites();
+  const isFav = favoriteIds.includes(id);
   return (
     <div className="w-64 bg-white rounded-xl text-left overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 font-body">
 
@@ -30,10 +35,17 @@ export default function Card({ title, image, location, type, id }) {
         </p>
 
         {/* BUTTON */}
-        <button className="mt-4 w-full py-2 rounded-lg bg-green-500 text-white font-medium hover:bg-green-600 transition-colors"
-          onClick={() => navigate(`/recipe/${id}`)}>
-          View Recipe
-        </button>
+        <div className="w-full flex gap-2">
+          <button className="mt-4 flex-1 w-full py-2 rounded-lg bg-green-500 text-white font-medium hover:bg-green-600 transition-colors"
+            onClick={() => navigate(`/recipe/${id}`)}>
+            View Recipe
+          </button>
+          <button className={`mt-4 w-16 py-2 rounded-lg bg-gray-200 font-medium ${isFav? 'text-red-500 hover:bg-pink-300 ' : 'text-pink-300 hover:bg-red-500'}  transition-colors`}
+            onClick={() => toggleFavorite(id)}>
+            <FontAwesomeIcon icon={faHeart} />
+          </button>
+        </div>
+
       </div>
     </div>
   );

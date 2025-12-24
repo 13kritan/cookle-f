@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-export default function Search() {
+export default function Search({setSearchPage}) {
   const [search, setSearch] = useState('')
   const navigate = useNavigate()
   return (
@@ -52,7 +52,7 @@ export default function Search() {
           <FontAwesomeIcon className='absolute top-1/2 -translate-y-1/2 left-5'
             onClick={() => navigate(`/search?q=${encodeURIComponent(search)}`)}
             icon={faMagnifyingGlass} />
-          <input onChange={(e) => setSearch(e.target.value)}
+          <input onChange={(e) => setSearch(e.target.value) }
             className='rounded-lg bg-gray-200 px-4 pl-12 py-2 outline-none w-full'
             placeholder='Search a recipe'
             type="text" />
