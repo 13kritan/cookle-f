@@ -5,7 +5,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar() {
     return (
-        <div className='w-full h-[10%] bg-[#282828] px-20 flex items-center justify-between'>
+        <div className='w-full h-[10vh] bg-[#282828] px-20 flex items-center justify-between'>
             <div className="img w-32">
                 <img className='w-full cursor-pointer' src={Logo} alt="cookle" />
             </div>
