@@ -49,7 +49,7 @@ export default function RecipeGrid() {
         }
 
         // 2. Fetch full meal details
-        const requests = filteredIds?.slice(0, 8).map(meal => 
+        const requests = filteredIds?.slice(0, 8).map(meal =>
           getMealById(meal?.idMeal)
         );
         console.log(requests)
@@ -111,9 +111,9 @@ export default function RecipeGrid() {
   );
 
   return (
-    <div className='bg-gray-200 min-h-[55vh] w-full font-body px-16 py-2 flex gap-2 text-left'>
+    <div className='bg-gray-200 min-h-[55vh] w-full font-body lg:px-16 md:px-12 xs:px-4 py-2 flex md:flex-row xs:flex-col gap-2 text-left'>
 
-      <div className="max-w-[30%] mx-auto bg-white rounded-xl shadow-md p-5 font-body">
+      <div className="md:max-w-[30%] lg:max-w-[20%] xs:w-full mx-auto bg-white rounded-xl shadow-md xs:px-12 xs:py-3  md:p-5 font-body">
         <div className="flex flex-col gap-4">
           <input
             type="text"
@@ -186,16 +186,37 @@ export default function RecipeGrid() {
           </div>
         </div>
 
-        <div className='grid gap-2 w-full grid-cols-4'>
+        <div className='w-full h-full flex items-center justify-center'>
           {
-            loading ? "Loading" :
-              paginatedMeals?.map((meal, i) => (
-                <Card key={meal.idMeal} title={meal.strMeal} image={meal.strMealThumb} location={meal.strArea} type={meal.strCategory} id={meal.idMeal} />
-              ))
+            loading ? <div className="flex flex-col items-center justify-center w-full bg-gray-100 font-body">
+
+              {/* Animated pot */}
+              <div className="relative">
+                <div className="w-20 h-20 rounded-full border-4 border-green-500 border-t-transparent animate-spin" />
+                <span className="absolute inset-0 flex items-center justify-center text-3xl">
+                  🍲
+                </span>
+              </div>
+
+              <p className="mt-4 text-green-600 font-semibold tracking-wide">
+                Cooking Something Delicious...
+              </p>
+
+              <p className="text-sm text-gray-400 mt-1">
+                Please wait...
+              </p>
+            </div> :
+              <div className='grid gap-2 w-full h-full lg:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 place-items-center'>
+                {
+                  paginatedMeals?.map((meal, i) => (
+                    <Card key={meal.idMeal} title={meal.strMeal} image={meal.strMealThumb} location={meal.strArea} type={meal.strCategory} id={meal.idMeal} />
+                  ))
+                }
+              </div>
           }
         </div>
-
       </div>
+
 
     </div>
   )

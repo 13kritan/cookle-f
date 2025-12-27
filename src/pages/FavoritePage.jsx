@@ -50,7 +50,7 @@ const FavoritePage = () => {
             ) : (
                 <>
                     {/* Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center">
                         {paginatedMeals.map((meal) => (
                             <Card key={meal.idMeal} title={meal.strMeal} image={meal.strMealThumb} location={meal.strArea} type={meal.strCategory} id={meal.idMeal} />
                         ))}

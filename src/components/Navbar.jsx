@@ -26,18 +26,18 @@ export default function Navbar() {
         setUser(null);
     };
     return (
-        <div className='w-full h-[10vh] bg-[#282828] px-20 flex items-center justify-between'>
-            <div className="img w-32">
+        <div className='w-full h-[10vh] bg-[#282828] md:px-20 sm:px-10 xs:px-4 flex items-center justify-between'>
+            <div className="img md:w-32 w-24">
                 <img className='w-full cursor-pointer' src={Logo} alt="cookle" />
             </div>
 
             <div className="flex gap-6 items-center text-white font-body">
-                <ul className='flex text-lg font-semibold gap-6'>
+                <ul className='flex md:text-lg xs:text-sm font-semibold gap-6'>
                     <li className='cursor-pointer' onClick={() => navigate("/")}>Home</li>
                     <li className='cursor-pointer' onClick={() => navigate("/favorite")}>Favorites</li>
                 </ul>
                 <div className="icon">
-                    <p onClick={() => setOpen(!open)} className="p-2 text-xl bg-neutral-700 rounded-full flex items-center justify-center cursor-pointer"><FontAwesomeIcon icon={faUser} /></p>
+                    <p onClick={() => setOpen(!open)} className="p-2 md:text-xl xs:text-sm bg-neutral-700 rounded-full flex items-center justify-center cursor-pointer"><FontAwesomeIcon icon={faUser} /></p>
                     {/* Dropdown */}
                     {open && (
                         <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg py-2 z-10">

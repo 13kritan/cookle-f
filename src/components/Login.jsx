@@ -22,7 +22,7 @@ export default function Login({isLogin, setIsLogin}) {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-100 px-6 min-h-screen">
+    <div className="flex items-center justify-center bg-gray-100 px-6 py-10">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome Back 👋</h2>
         <p className="text-gray-500 mb-6">Login to continue exploring recipes</p>

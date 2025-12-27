@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/auth", // change if needed
+  baseURL: "http://localhost:5000/api/auth",
 });
 
 // Attach token automatically
@@ -27,9 +27,7 @@ export const getMe = () =>{
       },
     });
 
-    // Axios puts the actual response data in response.data
     const user = response;
-    // { _id: '694c08b4e08a401d317817be', name: 'Sora22', email: 'sora22@gmail.com', __v: 0 }
 
     return user;
   } catch (err) {

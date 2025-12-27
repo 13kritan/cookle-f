@@ -11,7 +11,7 @@ export default function Card({ title, image, location, type, id }) {
   const { favoriteIds, toggleFavorite } = useFavorites();
   const isFav = favoriteIds.includes(id);
   return (
-    <div className="w-64 bg-white rounded-xl text-left overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 font-body">
+    <div className="w-64 h-full bg-white flex flex-col justify-between rounded-xl text-left overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 font-body">
 
       {/* IMAGE */}
       <div className="h-44 w-full overflow-hidden">
