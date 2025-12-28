@@ -68,7 +68,7 @@ const RecipeDetail = () => {
           {meal.strMeal}
         </h1>
 
-        {/* Meta */}
+        {/* Category */}
         <p className="text-gray-600 mb-8 text-center">
           {meal.strCategory} • {meal.strArea}
         </p>
