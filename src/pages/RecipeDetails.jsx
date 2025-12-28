@@ -12,7 +12,7 @@ const RecipeDetail = () => {
     const fetchMeal = async () => {
       try {
         const { data } = await getMealById(id);
-        setMeal(data.meals[0]);
+        setMeal(data?.meals[0]);
       } catch (err) {
         console.error(err);
       } finally {

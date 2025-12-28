@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import SearchResult from "./pages/SearchResult";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import FavoritePage from "./pages/FavoritePage";
+import RecipeDetail from "./pages/RecipeDetails";
 
 function App() {
   return (
@@ -30,6 +31,11 @@ function App() {
               <Route path="/search" element=
               {<ProtectedRoute>
                 <SearchResult />
+              </ProtectedRoute>
+              } />
+               <Route path="/recipe/:id" element=
+              {<ProtectedRoute>
+                <RecipeDetail />
               </ProtectedRoute>
               } />
               <Route path="/favorite" element=
