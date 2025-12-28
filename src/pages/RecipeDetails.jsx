@@ -11,8 +11,8 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchMeal = async () => {
       try {
-        const { data } = await getMealById(id);
-        setMeal(data?.meals[0]);
+        const  data  = await getMealById(id);
+        setMeal(data);
       } catch (err) {
         console.error(err);
       } finally {

@@ -14,7 +14,7 @@ export const filterByArea = (area) =>
     export const getMealById = async (id) => {
         try {
           const res = await axios.get(`${BASE_URL}/lookup.php?i=${id}`);
-          // return the meal object directly, not the whole Axios response
+          console.log(res.data.meals[0])
           return res.data.meals ? res.data.meals[0] : null;
         } catch (err) {
           console.error("getMealById failed:", err);
