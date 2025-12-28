@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/favorites";
+const API = "https://cookle.onrender.com/api/favorites";
 
 const authHeader = () => ({
   headers: {
