@@ -39,7 +39,7 @@ export default function RecipeGrid() {
       try {
         setLoading(true);
 
-        // 1. Get filtered meal IDs
+        // Get filtered meal IDs
         const filteredIds = await fetchFilteredMeals({ area, category });
 
         if (!filteredIds.length) {
@@ -48,7 +48,7 @@ export default function RecipeGrid() {
           return;
         }
 
-        // 2. Fetch full meal details
+        // Fetch full meal details
         const requests = filteredIds?.slice(0, 8).map(meal =>
           getMealById(meal?.idMeal)
         );
