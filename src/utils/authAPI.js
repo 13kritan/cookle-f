@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://cookle.onrender.com/api/auth",
+  baseURL: "cookle-production.up.railway.app/api/auth",
 });
 
 // Attach token automatically
