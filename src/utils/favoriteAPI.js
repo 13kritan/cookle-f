@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "cookle-production.up.railway.app";
+const API = "cookle-production.up.railway.app/api/favorites";
 
 const authHeader = () => ({
   headers: {
